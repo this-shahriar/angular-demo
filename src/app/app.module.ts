@@ -14,6 +14,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { ListitemComponent } from './reusables/listitem/listitem.component';
 import { DataFetchingService } from './data-fetching.service';
+import { MatPaginatorModule } from '@angular/material/paginator';
 
 const material = [
   MatSidenavModule,
@@ -22,6 +23,7 @@ const material = [
   MatCardModule,
   MatIconModule,
   MatProgressSpinnerModule,
+  MatPaginatorModule,
 ];
 
 @NgModule({

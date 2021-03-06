@@ -1,6 +1,9 @@
 <div class="page-title">
   <h1>Authors</h1>
-  <p>Fetching list of authors from https://api.quotable.io/authors</p>
+  <p>
+    Fetching list of authors from https://api.quotable.io/app-authors
+    <span class="filter">{{ pageQuery }}</span>
+  </p>
 </div>
 
 <div class="spinner" *ngIf="!authorsList.list">
@@ -11,4 +14,13 @@
     <!-- <app-listitem [method]="boundedAddToFavs" [author]="author"></app-listitem> -->
     <app-listitem [author]="author"></app-listitem>
   </div>
+</div>
+<div class="space" *ngIf="authorsList.list">
+  <mat-paginator
+    [length]="pageTotal"
+    [pageSize]="10"
+    [pageSizeOptions]="[5, 10, 25, 100]"
+    (page)="pageChange($event)"
+  >
+  </mat-paginator>
 </div>

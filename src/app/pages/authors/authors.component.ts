@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { PageEvent } from '@angular/material/paginator';
 import { DataFetchingService } from '../../data-fetching.service';
 
 @Component({
@@ -7,13 +8,24 @@ import { DataFetchingService } from '../../data-fetching.service';
   styleUrls: ['./authors.component.scss'],
 })
 export class AuthorsComponent implements OnInit {
-  pageInfo: any = {};
+  pageTotal: number = 0;
+  pageQuery: string = '?limit=10';
+
   constructor(public authorsList: DataFetchingService) {}
 
   ngOnInit(): void {
-    this.authorsList.getAuthorList('?limit=10&skip=20').subscribe((data) => {
-      this.authorsList.setList(data?.results);
-      this.pageInfo = data;
-    });
+    this.getList();
   }
+
+  getList = () =>
+    this.authorsList.getAuthorList(this.pageQuery).subscribe((data) => {
+      this.authorsList.setList(data?.results);
+      this.pageTotal = data.totalCount;
+    });
+
+  pageChange = (e: PageEvent) => {
+    console.log(e);
+    this.pageQuery = `?limit=${e.pageSize}&skip=${e.pageIndex * e.pageSize}`;
+    this.getList();
+  };
 }

@@ -1,16 +1,20 @@
-<div class="header">
-  <button (click)="drawer.open()" *ngIf="mobile">Open menu</button>
-  <span>header</span>
+<div *ngIf="mobile" class="header">
+  <button
+    (click)="drawer.toggle()"
+    mat-icon-button
+    aria-label="Example icon button with a menu icon"
+  >
+    <mat-icon>{{ drawer.opened ? "close" : "menu" }}</mat-icon>
+  </button>
+  <span>Header only for mobile view</span>
 </div>
 <mat-drawer-container>
   <mat-drawer
+    (click)="mobile && drawer.close()"
     [opened]="mobile ? null : true"
     #drawer
     [mode]="mobile ? 'over' : 'side'"
   >
-    <button *ngIf="mobile" (click)="drawer.close()" mat-raised-button>
-      close
-    </button>
     <div class="space"></div>
     <mat-action-list>
       <button
