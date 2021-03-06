@@ -1,0 +1,16 @@
+<mat-card>
+  <div class="mat-header-custom">
+    <h1>{{ author.name }}</h1>
+    <button
+      (click)="removeFromFav ? removeFromFav(author._id) : addToFav(author._id)"
+      [color]="author.fav ? 'warn' : ''"
+      aria-label="Example icon button with a heart icon"
+      mat-icon-button
+      class="btn-fav"
+    >
+      {{ author.fav ? "Remove from favs" : "Add to favs" }}
+      <mat-icon>{{ author.fav ? "favorite" : "favorite_outline" }}</mat-icon>
+    </button>
+  </div>
+  <p>{{ author.bio }}</p>
+</mat-card>

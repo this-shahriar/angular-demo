@@ -1,0 +1,14 @@
+<div class="page-title">
+  <h1>Favorite Authors</h1>
+  <p>Fetching list of authors from https://api.quotable.io/authors</p>
+</div>
+
+<div class="space" *ngIf="!list">No favorites found.</div>
+<div *ngIf="list" class="authors-wrapper">
+  <div class="authors" *ngFor="let author of list">
+    <app-listitem
+      [removeFromFav]="removeFromFav"
+      [author]="author"
+    ></app-listitem>
+  </div>
+</div>

@@ -1,0 +1,36 @@
+<div class="header">
+  <button (click)="drawer.open()" *ngIf="mobile">Open menu</button>
+  <span>header</span>
+</div>
+<mat-drawer-container>
+  <mat-drawer
+    [opened]="mobile ? null : true"
+    #drawer
+    [mode]="mobile ? 'over' : 'side'"
+  >
+    <button *ngIf="mobile" (click)="drawer.close()" mat-raised-button>
+      close
+    </button>
+    <div class="space"></div>
+    <mat-action-list>
+      <button
+        [routerLink]="'/authors'"
+        [ngClass]="routeExtn === '/authors' ? 'side-selected' : ''"
+        mat-list-item
+      >
+        Authors
+      </button>
+      <button
+        [routerLink]="'/favorite-authors'"
+        [ngClass]="routeExtn === '/favorite-authors' ? 'side-selected' : ''"
+        mat-list-item
+      >
+        Favorite Authors
+      </button>
+    </mat-action-list>
+  </mat-drawer>
+
+  <div class="main-view">
+    <router-outlet></router-outlet>
+  </div>
+</mat-drawer-container>

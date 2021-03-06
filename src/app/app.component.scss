@@ -1,0 +1,23 @@
+.header {
+  height: 3.5rem;
+  background-color: lightblue;
+}
+
+.side-selected {
+  background-color: #eaeaea;
+}
+
+.space {
+  padding: 1rem;
+}
+
+mat-drawer-container {
+  height: calc(100vh - 3.5rem);
+  width: 100vw;
+}
+
+mat-drawer {
+  width: 250px;
+}
+
+
